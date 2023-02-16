@@ -5,9 +5,9 @@ const path = require('path');
 const logger = require('morgan');
 
 // 라우팅 설정
-const index = require('./routes/index');
-const index = require('./routes/user');
-const index = require('./routes/about');
+const indexRouter = require('./routes/index');
+const memberRouter = require('./routes/member');
+const boardRouter = require('./routes/board');
 
 //express 객체 생성 및 포트 변수 선언
 const app = express();
@@ -18,8 +18,8 @@ app.use(express.static(path.join(__dirname, 'static')));
 
 //라우팅 모듈 등록
 app.use('/', indexRouter);
-app.use('/user', userRouter);
-app.use('/about', aboutRouter);
+app.use('/member', memberRouter);
+app.use('/board', boardRouter);
 
 //404, 500 응답코드 라우팅 처리 정의
 app.use((req, res) => {
